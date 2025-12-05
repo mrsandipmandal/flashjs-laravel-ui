@@ -205,15 +205,3 @@ Contributions are welcome. Feel free to submit a Pull Request for new UI compone
 
 MIT License
 © Sandip Mandal
-
----
-
-All set! ✔  
-If you want, I can:
-
-✅ Commit this README.md directly to your GitHub repo  
-✅ Add GitHub badges (version/downloads)  
-✅ Add screenshots + examples folder  
-✅ Publish to Packagist for global Composer installs
-
-Would you like me to **push the update automatically** to your GitHub repo?

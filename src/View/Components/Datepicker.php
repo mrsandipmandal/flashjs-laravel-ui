@@ -1,6 +1,6 @@
 <?php
 
-namespace Sandip\FlashJsUi\View\Components;
+namespace FlashJs\FlashJsUi\View\Components;
 
 use Illuminate\View\Component;
 

@@ -1,17 +1,17 @@
 {
-  "name": "sandip/flashjs-laravel-ui",
+  "name": "flashjs/flashjs-laravel-ui",
   "description": "Laravel Blade components + JS integration for Dropdown, Modals, Select2, Flatpickr, Charts, Editors etc. via a single flashjs library.",
   "type": "library",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Sandip\\FlashJsUi\\": "src/"
+      "FlashJs\\FlashJsUi\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Sandip\\FlashJsUi\\FlashJsServiceProvider"
+        "FlashJs\\FlashJsUi\\FlashJsServiceProvider"
       ]
     }
   },

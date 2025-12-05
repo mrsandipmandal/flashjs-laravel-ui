@@ -1,6 +1,6 @@
 <?php
 
-namespace Sandip\FlashJsUi;
+namespace FlashJs\FlashJsUi;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;

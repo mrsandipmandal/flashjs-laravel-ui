@@ -66,7 +66,7 @@ FlashJS Laravel UI is a reusable Laravel package that provides Blade components 
 ### Install via Composer
 
 ```bash
-composer require sandip/flashjs-laravel-ui
+composer require flashjs/flashjs-laravel-ui
 ```
 
 If developing locally from cloned repository:
@@ -82,7 +82,7 @@ If developing locally from cloned repository:
 ```
 
 ```bash
-composer require sandip/flashjs-laravel-ui:"*"
+composer require flashjs/flashjs-laravel-ui:"*"
 ```
 
 ### Publish Assets

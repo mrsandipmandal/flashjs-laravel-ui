@@ -1,8 +1,18 @@
 {
   "name": "flashjs/flashjs-laravel-ui",
+  "version": "1.0.1",
   "description": "Laravel Blade components + JS integration for Dropdown, Modals, Select2, Flatpickr, Charts, Editors etc. via a single flashjs library.",
   "type": "library",
   "license": "MIT",
+  "authors": [
+    {
+      "name": "Sandip Mandal",
+      "email": "mrsandipmandal@gmail.com",
+      "homepage": "https://github.com/mrsandipmandal"
+    }
+  ],
+  "homepage": "https://github.com/mrsandipmandal/flashjs-laravel-ui",
+  "keywords": ["laravel", "blade", "components", "dropdown", "modal", "select2", "flatpickr", "chart", "editor"],
   "autoload": {
     "psr-4": {
       "FlashJs\\FlashJsUi\\": "src/"

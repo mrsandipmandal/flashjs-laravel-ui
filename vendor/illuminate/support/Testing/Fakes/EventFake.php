@@ -3,26 +3,23 @@
 namespace Illuminate\Support\Testing\Fakes;
 
 use Closure;
-use Illuminate\Container\Container;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Contracts\Events\ShouldDispatchAfterCommit;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Support\Traits\ForwardsCalls;
 use Illuminate\Support\Traits\ReflectsClosures;
 use PHPUnit\Framework\Assert as PHPUnit;
 use ReflectionFunction;
 
-class EventFake implements Dispatcher, Fake
+class EventFake implements Dispatcher
 {
-    use ForwardsCalls, ReflectsClosures;
+    use ReflectsClosures;
 
     /**
      * The original event dispatcher.
      *
      * @var \Illuminate\Contracts\Events\Dispatcher
      */
-    public $dispatcher;
+    protected $dispatcher;
 
     /**
      * The event types that should be intercepted instead of dispatched.
@@ -299,7 +296,7 @@ class EventFake implements Dispatcher, Fake
         $name = is_object($event) ? get_class($event) : (string) $event;
 
         if ($this->shouldFakeEvent($name, $payload)) {
-            $this->fakeEvent($event, $name, func_get_args());
+            $this->events[$name][] = func_get_args();
         } else {
             return $this->dispatcher->dispatch($event, $payload, $halt);
         }
@@ -329,24 +326,6 @@ class EventFake implements Dispatcher, Fake
                             : $event === $eventName;
             })
             ->isNotEmpty();
-    }
-
-    /**
-     * Push the event onto the fake events array immediately or after the next database transaction.
-     *
-     * @param  string|object  $event
-     * @param  string  $name
-     * @param  array  $arguments
-     * @return void
-     */
-    protected function fakeEvent($event, $name, $arguments)
-    {
-        if ($event instanceof ShouldDispatchAfterCommit && Container::getInstance()->bound('db.transactions')) {
-            return Container::getInstance()->make('db.transactions')
-                ->addCallback(fn () => $this->events[$name][] = $arguments);
-        }
-
-        $this->events[$name][] = $arguments;
     }
 
     /**
@@ -397,22 +376,10 @@ class EventFake implements Dispatcher, Fake
      *
      * @param  string|object  $event
      * @param  mixed  $payload
-     * @return mixed
+     * @return array|null
      */
     public function until($event, $payload = [])
     {
         return $this->dispatch($event, $payload, true);
-    }
-
-    /**
-     * Handle dynamic method calls to the dispatcher.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return mixed
-     */
-    public function __call($method, $parameters)
-    {
-        return $this->forwardCallTo($this->dispatcher, $method, $parameters);
     }
 }

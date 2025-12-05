@@ -1,5 +1,48 @@
 # FlashJS Laravel UI
 
+## Configuration
+
+Located at:
+
+```
+config/flashjs.php
+```
+
+Example:
+
+```php
+return [
+    'default_chart' => 'chartjs',
+    'editor' => 'quill',
+];
+```
+
+## Roadmap
+
+- Accordion component
+- Tabs component
+- Tooltips and Notifications
+- Carousel support
+- Tailwind/Bootstrap Themes
+- FullCalendar integration
+
+## Contributing
+
+Contributions are welcome. Feel free to submit a Pull Request for new UI components or improvements.
+
+## License
+
+MIT License © Sandip Mandal
+
+## Additional Links
+- [Code](https://github.com/mrsandipmandal/flashjs-laravel-ui)
+- [Issues](https://github.com/mrsandipmandal/flashjs-laravel-ui/issues)
+- [Pull requests](https://github.com/mrsandipmandal/flashjs-laravel-ui/pulls)
+- [Actions](https://github.com/mrsandipmandal/flashjs-laravel-ui/actions)
+- [Projects](https://github.com/mrsandipmandal/flashjs-laravel-ui/projects)
+- [Security](https://github.com/mrsandipmandal/flashjs-laravel-ui/security)
+- [Insights](https://github.com/mrsandipmandal/flashjs-laravel-ui/pulse)
+
 FlashJS Laravel UI is a reusable Laravel package that provides Blade components with automatic JavaScript initialization. It supports Dropdowns, Modals, Select inputs, Datepickers, Charts, and Rich Text Editors using a single JavaScript file (`flashjs.js`). This package is designed for Laravel 10 and 11 applications.
 
 ---

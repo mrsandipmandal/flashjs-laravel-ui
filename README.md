@@ -1,100 +1,159 @@
 # FlashJS Laravel UI
 
-Reusable Laravel Blade components + a single JS library (`flashjs.js`) that wires up
-Dropdowns, Modals, Select inputs (Select2 / Choices.js), Datepickers (Flatpickr),
-Charts (Chart.js / ApexCharts) and Editors (Quill / Trix / SimpleMDE).
+FlashJS Laravel UI is a reusable Laravel package that provides Blade components with automatic JavaScript initialization.  
+It supports Dropdowns, Modals, Select inputs, Datepickers, Charts, and Rich Text Editors using a single JavaScript file (`flashjs.js`).
 
-## Install
+This package is designed for Laravel 10 and 11 applications.
+
+---
+
+## Features
+
+- Ready-to-use Blade components
+- Single JavaScript initializer for all UI widgets
+- Integration with popular frontend libraries:
+  - Select2, Choices.js (Select Inputs)
+  - Flatpickr (Datepicker)
+  - Chart.js, ApexCharts (Charts)
+  - Quill, Trix, SimpleMDE (Text Editors)
+- Publishable Blade Views and Config
+- Works smoothly with Vite
+
+---
+
+## Installation
+
+### Install via Composer
 
 ```bash
 composer require sandip/flashjs-laravel-ui
-```
+If developing locally from cloned repository:
 
-If needed, add the service provider manually to `config/app.php`:
-
-```php
-Sandip\FlashJsUi\FlashJsServiceProvider::class,
-```
-
-Then publish assets:
-
-```bash
+jsonc
+Copy code
+// composer.json of your Laravel project
+"repositories": [
+  {
+    "type": "path",
+    "url": "../flashjs-laravel-ui"
+  }
+]
+bash
+Copy code
+composer require sandip/flashjs-laravel-ui:"*"
+Publish Assets
+bash
+Copy code
 php artisan vendor:publish --tag=flashjs-config
 php artisan vendor:publish --tag=flashjs-js
 php artisan vendor:publish --tag=flashjs-views
-```
+JavaScript Setup (Vite)
+Install frontend libraries:
 
-Install JS dependencies (example with Vite):
-
-```bash
+bash
+Copy code
 npm install jquery select2 choices.js flatpickr chart.js apexcharts quill simplemde trix
-```
+Add FlashJS in resources/js/app.js:
 
-In `resources/js/app.js`:
-
-```js
+js
+Copy code
 import './vendor/flashjs';
-```
+Build:
 
-Then:
-
-```bash
+bash
+Copy code
 npm run dev
-```
+FlashJS automatically initializes components on load.
 
-## Basic Usage
-
-### Dropdown
-
-```blade
-<x-flash-dropdown label="User Menu">
-    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
-    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+Usage Examples
+Dropdown
+blade
+Copy code
+<x-flash-dropdown label="Menu">
+    <a href="#">Profile</a>
+    <a href="#">Logout</a>
 </x-flash-dropdown>
-```
-
-### Modal
-
-```blade
-<x-flash-modal id="deleteModal" title="Delete record?">
-    <p>Are you sure?</p>
+Modal
+blade
+Copy code
+<x-flash-modal id="exampleModal" title="Demo Modal">
+    Modal content goes here.
 </x-flash-modal>
-```
 
-### Select
-
-```blade
+<button data-flash-modal-open="exampleModal">Open Modal</button>
+Select
+blade
+Copy code
 <x-flash-select name="tags[]" multiple lib="choices">
     <option value="php">PHP</option>
     <option value="laravel">Laravel</option>
 </x-flash-select>
-```
-
-### Datepicker
-
-```blade
+Datepicker
+blade
+Copy code
 <x-flash-datepicker name="event_date" mode="single" />
-```
-
-### Chart
-
-```blade
+Chart
+blade
+Copy code
 <x-flash-chart
     type="bar"
     :data="[
         'labels' => ['Jan', 'Feb', 'Mar'],
-        'datasets' => [[ 'label' => 'Sales', 'data' => [10, 20, 30] ]]
+        'datasets' => [[ 'label' => 'Data', 'data' => [10,20,30] ]]
     ]"
 />
-```
-
-### Editor
-
-```blade
-<x-flash-editor name="body" engine="quill">
-    {!! old('body') !!}
+Text Editor
+blade
+Copy code
+<x-flash-editor name="content" engine="quill">
+    {!! old('content') !!}
 </x-flash-editor>
-```
+Configuration
+Located at:
 
-You can extend this package with Accordion, Tabs, Tooltips, Carousels, Notifications
-by following the existing pattern: Blade component + `data-flash-*` attributes + JS init in `flashjs.js`.
+arduino
+Copy code
+config/flashjs.php
+Example:
+
+php
+Copy code
+return [
+    'default_chart' => 'chartjs',
+    'editor' => 'quill',
+];
+Roadmap
+Accordion component
+
+Tabs component
+
+Tooltips and Notifications
+
+Carousel support
+
+Tailwind/Bootstrap Themes
+
+FullCalendar integration
+
+Contributing
+Contributions are welcome.
+Feel free to submit a Pull Request for new UI components or improvements.
+
+License
+MIT License
+© Sandip Mandal
+
+yaml
+Copy code
+
+---
+
+All set! ✔  
+If you want, I can:
+
+✅ Commit this README.md directly to your GitHub repo  
+✅ Add GitHub badges (version/downloads)  
+✅ Add screenshots + examples folder  
+✅ Publish to Packagist for global Composer installs
+
+Would you like me to **push the update automatically** to your GitHub repo?
